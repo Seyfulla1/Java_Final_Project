@@ -42,6 +42,7 @@ public class Passenger {
         return this.name.equals(thatP.getName()) && this.surname.equals(thatP.getSurname());
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(name, surname);
