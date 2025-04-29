@@ -1,4 +1,9 @@
 package az.edu.bhos.finalProject.dao;
 
-public interface BookingDAO {
+import az.edu.bhos.finalProject.entity.Booking;
+
+import java.util.List;
+
+public interface BookingDAO extends DAO<Booking> {
+    List<Booking> getByPassenger(String name, String surname); //might add custom exception
 }

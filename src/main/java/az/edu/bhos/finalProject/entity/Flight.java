@@ -20,11 +20,11 @@ public class Flight {
     private int availableSeats;
 
     @JsonCreator
-    public Flight( @JsonProperty("flightID")String flightID,
-                   @JsonProperty("departure")String departure,
-                   @JsonProperty("destination")String destination,
-                   @JsonProperty("departureDate")LocalDate departureDate,
-                   @JsonProperty("capacity")int capacity) {
+    public Flight(@JsonProperty("flightID") String flightID,
+                  @JsonProperty("departure") String departure,
+                  @JsonProperty("destination") String destination,
+                  @JsonProperty("departureDate") LocalDate departureDate,
+                  @JsonProperty("capacity") int capacity) {
 
         this.flightID = flightID;
         this.departure = departure;
@@ -33,24 +33,31 @@ public class Flight {
         this.capacity = capacity;
         this.availableSeats = capacity;
     }
+
     public String getFlightID() {
         return flightID;
     }
+
     public String getDeparture() {
         return departure;
     }
+
     public String getDestination() {
         return destination;
     }
+
     public LocalDate getDepartureDate() {
         return departureDate;
     }
+
     public int getCapacity() {
         return capacity;
     }
+
     public int getAvailableSeats() {
         return availableSeats;
     }
+
     public void setAvailableSeats(int availableSeats) {
         this.availableSeats = availableSeats;
     }
@@ -64,19 +71,21 @@ public class Flight {
                 ", Capacity: " + capacity +
                 ", Available Seats: " + availableSeats;
     }
+
     @Override
-    public boolean equals(Object that){
-        if(this==that){
+    public boolean equals(Object that) {
+        if (this == that) {
             return true;
         }
-        if(!(that instanceof Flight)){
+        if (!(that instanceof Flight)) {
             return false;
         }
-        Flight thatFlight=(Flight) that;
+        Flight thatFlight = (Flight) that;
         return this.flightID.equals(thatFlight.flightID);
     }
+
     @Override
     public int hashCode() {
         return flightID.hashCode();
     }
-
+}
