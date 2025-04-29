@@ -1,5 +1,6 @@
 package az.edu.bhos.finalProject.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,4 +54,3 @@ public class Booking {
         return bookingId.hashCode();
     }
 
-}

@@ -1,5 +1,6 @@
 package az.edu.bhos.finalProject.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -45,4 +46,4 @@ public class Passenger {
     public int hashCode() {
         return Objects.hash(name, surname);
     }
-}
+
