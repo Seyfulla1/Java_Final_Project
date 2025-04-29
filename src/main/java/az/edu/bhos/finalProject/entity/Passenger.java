@@ -31,14 +31,14 @@ public class Passenger {
     }
 
     @Override
-    public boolean equals(Object that){
-        if(this==that){
+    public boolean equals(Object that) {
+        if (this == that) {
             return true;
         }
-        if(!(that instanceof Passenger)){
+        if (!(that instanceof Passenger)) {
             return false;
         }
-        Passenger thatP=(Passenger) that;
+        Passenger thatP = (Passenger) that;
         return this.name.equals(thatP.getName()) && this.surname.equals(thatP.getSurname());
     }
 
@@ -46,4 +46,5 @@ public class Passenger {
     public int hashCode() {
         return Objects.hash(name, surname);
     }
+}
 
