@@ -1,13 +1,15 @@
 package az.edu.bhos.finalProject.entity;
 
-public class User extends Passenger{
+public class User{
     private String username;
     private String password;
+    private Passenger passenger;
 
-    public User(String name, String surname, String username, String password) {
-        super(name, surname);
+    public User(Passenger passenger, String username, String password) {
+        this.passenger = passenger;
         this.username = username;
         this.password = password;
+
     }
 
     public String getUsername() {
@@ -22,6 +24,9 @@ public class User extends Passenger{
     public void setPassword(String password) {
         this.password = password;
     }
+    public Passenger getPassenger() {
+        return passenger;
+    }
     @Override
     public boolean equals(Object that){
         if(this==that){
@@ -31,8 +36,7 @@ public class User extends Passenger{
             return false;
         }
         User thatUser = (User) that;
-        return super.equals(thatUser)
-                && this.username.equals(thatUser.getUsername());
+        return this.passenger.equals(thatUser.passenger) && this.username.equals(thatUser.username);
     }
     @Override
     public int hashCode() {

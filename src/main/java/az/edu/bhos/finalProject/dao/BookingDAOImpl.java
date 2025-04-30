@@ -6,6 +6,7 @@ import az.edu.bhos.finalProject.util.Json;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDAOImpl implements BookingDAO {
@@ -15,7 +16,7 @@ public class BookingDAOImpl implements BookingDAO {
     public BookingDAOImpl(String filePath){
         this.filePath = filePath;
         try{
-        bookingList = Json.readJsonFile(this.filePath, new TypeReference<List<Booking>>(){});
+        bookingList = Json.readJsonFile(filePath, new TypeReference<List<Booking>>(){});
         }catch(IOException ie){
             System.out.println("Error reading booking data: " + ie.getMessage());
         }
