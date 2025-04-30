@@ -2,10 +2,11 @@ package az.edu.bhos.finalProject.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import az.edu.bhos.finalProject.entity.Passenger;
 import az.edu.bhos.finalProject.entity.User;
 import az.edu.bhos.finalProject.exception.DuplicateUserException;
 import az.edu.bhos.finalProject.exception.UserNotFoundException;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,29 +28,28 @@ class UserDAOImplTest {
         file.createNewFile();
         userDAO= new UserDAOImpl(testFilePath);
         List<User> users=new ArrayList<>();
-        users.add(new User("Ali", "Aliyev", "ali", "123"));
-        users.add(new User("Veli", "Veliev", "veli", "1a23"));
-        users.add(new User("Hasan", "Hasanov", "hasan", "1b23"));
-        users.add(new User("Huseyn", "Huseynov", "huseyn", "1c23"));
-        users.add(new User("Mehmet", "Mehmedov", "mehmet", "asd4"));
-        users.add(new User("Mika", "Mikaev", "mika", "123"));
+        users.add(new User(new Passenger("Ali", "Aliyev"), "ali", "123"));
+        users.add(new User(new Passenger("Veli", "Veliev"), "veli", "1a23"));
+        users.add(new User(new Passenger("Hasan", "Hasanov"), "hasan", "1b23"));
+        users.add(new User(new Passenger("Huseyn", "Huseynov"), "huseyn", "1c23"));
+        users.add(new User(new Passenger("Mehmet", "Mehmedov"), "mehmet", "asd4"));
+        users.add(new User(new Passenger("Mika", "Mikaev"), "mika", "123"));
         try {
             for (User user : users) {
                 userDAO.insert(user);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error writing user data: " + e.getMessage());
         }
     }
     @Test
-    void getByUsernameNonExistent() {
+    void getByUsernameInvalid() {
         String username="mikaz";
         assertThrows(UserNotFoundException.class,()-> userDAO.getByUsername(username));
     }
     @Test
     void getByUsernameValid(){
         String username="mehmet";
-        userDAO.getByUsername(username);
         assertEquals(username,userDAO.getByUsername(username).getUsername());
     }
 
@@ -61,33 +61,33 @@ class UserDAOImplTest {
 
     @Test
     void insertDuplicate() throws IOException {
-        User user=new User("Alibayram","Valiyev","ali","12356");
+        User user=new User(new Passenger("Alibayram","Valiyev"),"ali","12356");
         assertThrows(DuplicateUserException.class,()-> userDAO.insert(user));
 
     }
     @Test
     void insertValid() throws IOException {
-        User user=new User("Ali","Valiyev","alivali","123");
+        User user=new User(new Passenger("Ali","Valiyev"),"alivali","123");
         userDAO.insert(user);
         assertEquals(user.getUsername(),userDAO.getByUsername(user.getUsername()).getUsername());
     }
 
 
     @Test
-    void deleteNonExistent() throws IOException{
-        User user=new User("Huseyn","Huseynov","huseyn1","1c23");
+    void deleteInvalid() throws IOException{
+        User user=new User(new Passenger("Huseyn","Huseynov"),"huseyn1","1c23");
         assertThrows(UserNotFoundException.class,()-> userDAO.delete(user));
     }
 
     @Test
     void deleteValid() throws IOException {
-        User user = new User("Ali", "Aliyev", "ali", "123");
+        User user = new User(new Passenger("Ali", "Aliyev"), "ali", "123");
         userDAO.delete(user);
         assertThrows(UserNotFoundException.class, () -> userDAO.getByUsername(user.getUsername()));
     }
 
     @Test
-    void deleteByUsernameNonExistent() {
+    void deleteByUsernameInvalid() {
         String username="alma";
         assertThrows(UserNotFoundException.class,()-> userDAO.deleteByUsername(username));
 

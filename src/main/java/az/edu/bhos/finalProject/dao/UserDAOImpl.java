@@ -17,6 +17,7 @@ public class UserDAOImpl implements UserDAO {
         userList = Json.readJsonFile(filepath, new TypeReference<List<User>>() {});
         }catch (IOException ie){
             System.out.println("Error reading user data: " + ie.getMessage());
+
         }
     }
     @Override
