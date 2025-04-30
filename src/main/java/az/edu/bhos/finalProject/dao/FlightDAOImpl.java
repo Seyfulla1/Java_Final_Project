@@ -1,6 +1,7 @@
 package az.edu.bhos.finalProject.dao;
 
 import az.edu.bhos.finalProject.entity.Flight;
+import az.edu.bhos.finalProject.exception.FlightNotFoundException;
 import az.edu.bhos.finalProject.util.Json;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -19,11 +20,11 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
-    public Flight getById(String id) throws RuntimeException { // i will change this to flightnotfound ex
+    public Flight getById(String id) throws FlightNotFoundException {
         return flightList.stream()
                 .filter(f -> f.getFlightID().equals(id))
                 .findFirst()
-                .orElseThrow(() ->new RuntimeException("Flight not found"));
+                .orElseThrow(() ->new FlightNotFoundException("No flight found with ID: " + id));
     }
 
     @Override
@@ -37,7 +38,7 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
-    public boolean insert(Flight flight) throws IOException { //i might add duplicateflight ex
+    public boolean insert(Flight flight) throws IOException {
         if(flightList.contains(flight)) {
             return false;
         }
@@ -48,16 +49,17 @@ public class FlightDAOImpl implements FlightDAO {
 
 
     @Override
-    public boolean delete(Flight flight) throws IOException, RuntimeException { // i will change runtime ex to flightnotfound ex
+    public boolean delete(Flight flight) throws IOException, FlightNotFoundException{
         boolean success=flightList.remove(flight);
-        if(success) {
-            save();
+        if(!success) {
+            throw new FlightNotFoundException("Flight not found!");
         }
-        return success;
+        save();
+        return true;
     }
 
     @Override
-    public boolean deleteById(String id) throws IOException, RuntimeException { // i will change runtime ex to flightnotfound ex
+    public boolean deleteById(String id) throws IOException, FlightNotFoundException {
         return delete(getById(id));
     }
 
