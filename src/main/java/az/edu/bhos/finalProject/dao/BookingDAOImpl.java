@@ -12,9 +12,13 @@ public class BookingDAOImpl implements BookingDAO {
     private final String filePath;
     private List<Booking> bookingList;
 
-    public BookingDAOImpl(String filePath) throws IOException {
+    public BookingDAOImpl(String filePath){
         this.filePath = filePath;
+        try{
         bookingList = Json.readJsonFile(this.filePath, new TypeReference<List<Booking>>(){});
+        }catch(IOException ie){
+            System.out.println("Error reading booking data: " + ie.getMessage());
+        }
     }
 
     @Override

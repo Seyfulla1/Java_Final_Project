@@ -7,16 +7,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FlightDAOImpl implements FlightDAO {
     private final String filePath;
     private List<Flight> flightList;
 
-    public FlightDAOImpl(String filePath) throws IOException {
+    public FlightDAOImpl(String filePath){
         this.filePath = filePath;
+        try{
         flightList = Json.readJsonFile(this.filePath, new TypeReference<List<Flight>>(){});
+        }catch(IOException ie){
+            System.out.println("Error reading flight data: " + ie.getMessage());
+        }
     }
 
     @Override
@@ -28,8 +31,8 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
-    public ArrayList<Flight> getAll(){
-        return new ArrayList<>(flightList);
+    public List<Flight> getAll(){
+        return flightList;
     }
 
     @Override
