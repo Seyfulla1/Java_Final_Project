@@ -2,6 +2,8 @@ package az.edu.bhos.finalProject.service;
 
 import az.edu.bhos.finalProject.dao.FlightDAO;
 import az.edu.bhos.finalProject.entity.Flight;
+import az.edu.bhos.finalProject.exception.FlightNotFoundException;
+
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -24,7 +26,7 @@ public class FlightServiceImpl implements FlightService {
         try {
             return flightDAO.getById(flightID);
         } catch (RuntimeException e) {
-            throw new RuntimeException("Flight not found: " + flightID, e);
+            throw new FlightNotFoundException("Flight not found with ID: " + flightID);
         }
     }
 

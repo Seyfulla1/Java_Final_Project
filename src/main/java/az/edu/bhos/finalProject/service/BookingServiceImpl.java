@@ -2,6 +2,7 @@ package az.edu.bhos.finalProject.service;
 
 import az.edu.bhos.finalProject.dao.BookingDAO;
 import az.edu.bhos.finalProject.entity.Booking;
+import az.edu.bhos.finalProject.exception.BookingNotFoundException;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,7 +16,11 @@ public class BookingServiceImpl implements BookingSerivce {
 
     @Override
     public Booking getBookingById(String id) {
-        return bookingDAO.getById(id);
+        Booking booking = bookingDAO.getById(id);
+        if (booking == null) {
+            throw new BookingNotFoundException("Booking with ID " + id + " not found");
+        }
+        return booking;
     }
 
     @Override
@@ -30,12 +35,19 @@ public class BookingServiceImpl implements BookingSerivce {
 
     @Override
     public boolean deleteBooking(Booking booking) throws IOException {
-        return bookingDAO.delete(booking);
+        boolean result = bookingDAO.delete(booking);
+        if (!result) {
+            throw new BookingNotFoundException("Booking not found for deletion");
+        }
+        return true;
     }
 
     @Override
     public boolean deleteBookingById(String id) throws IOException {
-        return bookingDAO.deleteById(id);
+        if (!bookingDAO.deleteById(id)) {
+            throw new BookingNotFoundException("Booking with ID " + id + " not found for deletion");
+        }
+        return true;
     }
 
     @Override
