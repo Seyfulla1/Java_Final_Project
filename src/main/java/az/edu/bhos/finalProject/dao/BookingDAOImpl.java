@@ -1,6 +1,7 @@
 package az.edu.bhos.finalProject.dao;
 
 import az.edu.bhos.finalProject.entity.Booking;
+import az.edu.bhos.finalProject.exception.BookingNotFoundException;
 import az.edu.bhos.finalProject.util.Json;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -17,10 +18,10 @@ public class BookingDAOImpl implements BookingDAO {
     }
 
     @Override
-    public Booking getById(String id) throws RuntimeException{
+    public Booking getById(String id) throws BookingNotFoundException{
         return bookingList.stream()
                 .filter(b -> b.getBookingId().equals(id))
-                .findFirst().orElseThrow(() -> new RuntimeException("Booking not found"));
+                .findFirst().orElseThrow(() -> new BookingNotFoundException("No booking found with ID: " + id));
     }
 
     @Override
@@ -44,16 +45,17 @@ public class BookingDAOImpl implements BookingDAO {
     }
 
     @Override
-    public boolean delete(Booking booking) throws IOException {
+    public boolean delete(Booking booking) throws IOException, BookingNotFoundException {
         boolean success=bookingList.remove(booking);
-        if(success) {
-            save();
+        if(!success) {
+            throw new BookingNotFoundException("Booking not found!");
         }
-        return success;
+            save();
+        return true;
     }
 
     @Override
-    public boolean deleteById(String id) throws IOException {
+    public boolean deleteById(String id) throws IOException, BookingNotFoundException {
         return delete(getById(id));
     }
 
