@@ -116,7 +116,7 @@
   "destination" : "City7",
   "departureDate" : [ 2025, 6, 1, 17, 50 ],
   "capacity" : 150,
-  "availableSeats" : 147
+  "availableSeats" : 150
 }, {
   "flightID" : "FL018",
   "departure" : "Kiev",
@@ -312,7 +312,7 @@
   "destination" : "City5",
   "departureDate" : [ 2025, 6, 2, 7, 33 ],
   "capacity" : 150,
-  "availableSeats" : 147
+  "availableSeats" : 150
 }, {
   "flightID" : "FL046",
   "departure" : "Kiev",

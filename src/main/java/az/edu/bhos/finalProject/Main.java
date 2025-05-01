@@ -3,14 +3,11 @@ package az.edu.bhos.finalProject;
 import az.edu.bhos.finalProject.console.ConsoleMenu;
 import az.edu.bhos.finalProject.controller.*;
 import az.edu.bhos.finalProject.dao.*;
-import az.edu.bhos.finalProject.entity.Flight;
-import az.edu.bhos.finalProject.entity.Passenger;
-import az.edu.bhos.finalProject.entity.User;
+import az.edu.bhos.finalProject.entity.*;
 import az.edu.bhos.finalProject.logging.LoggingService;
 import az.edu.bhos.finalProject.service.*;
 import az.edu.bhos.finalProject.util.Json;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -79,10 +76,10 @@ public class Main {
 
         FlightController flightController = new FlightController(flightService, userService, loggingService);
         BookingController bookingController = new BookingController(bookingService, userService, loggingService,flightService);
+        UserController userController = new UserController(userService);
 
-        ConsoleMenu menu = new ConsoleMenu(userService, flightController, bookingController, loggingService);
+        ConsoleMenu menu = new ConsoleMenu(flightController, bookingController, userController, loggingService);
         menu.start();
-
 
     }
 }
