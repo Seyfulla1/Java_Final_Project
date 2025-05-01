@@ -2,6 +2,7 @@ package az.edu.bhos.finalProject.console;
 
 import az.edu.bhos.finalProject.controller.BookingController;
 import az.edu.bhos.finalProject.controller.FlightController;
+import az.edu.bhos.finalProject.controller.UserController;
 import az.edu.bhos.finalProject.entity.Flight;
 import az.edu.bhos.finalProject.entity.Passenger;
 import az.edu.bhos.finalProject.exception.FlightNotFoundException;
@@ -17,28 +18,28 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleMenu {
-    private final UserService userService;
     private final FlightController flightController;
     private final BookingController bookingController;
+    private final UserController userController;
     private final LoggingService loggingService;
     private final Scanner scanner;
 
-    public ConsoleMenu(UserService userService,
-                       FlightController flightController,
+    public ConsoleMenu(FlightController flightController,
                        BookingController bookingController,
+                       UserController userController,
                        LoggingService loggingService) {
-        this.userService = userService;
         this.flightController = flightController;
         this.bookingController = bookingController;
         this.loggingService = loggingService;
         this.scanner = new Scanner(System.in);
+        this.userController = userController;
     }
 
     public void start() {
         System.out.println("Welcome to the Flight Booking Console App!");
 
         while (true) {
-            if (!userService.isAuthenticated()) {
+            if (!userController.isAuthenticated()) {
                 authenticate();
                 continue;
             }
@@ -53,7 +54,8 @@ public class ConsoleMenu {
                     case "3" -> searchAndBookFlight();
                     case "4" -> cancelBooking();
                     case "5" -> bookingController.viewBookings();
-                    case "6" -> exitApp();
+                    case "6" -> userController.logout();
+                    case "7" -> exitApp();
                     default -> throw new InvalidOptionException("Invalid menu option: " + choice);
                 }
             } catch (Exception e) {
@@ -70,7 +72,7 @@ public class ConsoleMenu {
         String password = scanner.nextLine();
 
         try {
-            if (userService.authenticate(username, password)) {
+            if (userController.authenticate(username, password)) {
                 System.out.println("Login successful!\n");
             } else {
                 System.out.println("Invalid credentials. Try again.\n");
@@ -87,7 +89,8 @@ public class ConsoleMenu {
         System.out.println("3. Search and book a flight");
         System.out.println("4. Cancel the booking");
         System.out.println("5. My flights");
-        System.out.println("6. Exit");
+        System.out.println("6. End Session");
+        System.out.println("7. Exit");
         System.out.print("Enter your choice: ");
     }
 
@@ -147,8 +150,8 @@ public class ConsoleMenu {
     }
 
     private void exitApp() {
-        userService.endSession();
-        System.out.println("Thank you for using the app. Goodbye!");
+        userController.logout();
+        System.out.println("Thank you for using the app. Davay Sagolun!");
         System.exit(0);
     }
 }
