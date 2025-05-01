@@ -6,7 +6,7 @@ import az.edu.bhos.finalProject.logging.LoggingService;
 import az.edu.bhos.finalProject.entity.Flight;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FlightController {
@@ -39,7 +39,7 @@ public class FlightController {
         loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " viewed all flights.");
     }
 
-    public void searchAvailableFlights(String departure, String destination, LocalDate date, int requestedSeats) {
+    public void searchAvailableFlights(String departure, String destination, LocalDateTime date, int requestedSeats) {
         if (!ensureAuthenticated("search for flights")) return;
 
         List<Flight> availableFlights = flightService.searchAvailableFlights(departure, destination, date, requestedSeats);
