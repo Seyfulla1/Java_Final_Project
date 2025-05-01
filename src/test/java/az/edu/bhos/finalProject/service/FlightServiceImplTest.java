@@ -52,7 +52,7 @@ public class FlightServiceImplTest {
 
     @Test
     public void testSearchAvailableFlights() {
-        LocalDateTime date = LocalDateTime.of(2025, 5, 15,0,0);
+        LocalDateTime date = LocalDateTime.of(2025, 5, 15,10,30);
         List<Flight> availableFlights = flightService.searchAvailableFlights("Baku", "New York", date, 2);
         assertNotNull(availableFlights);
         assertFalse(availableFlights.isEmpty());
