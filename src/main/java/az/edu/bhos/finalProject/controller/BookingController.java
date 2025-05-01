@@ -1,4 +1,76 @@
 package az.edu.bhos.finalProject.controller;
 
+import az.edu.bhos.finalProject.service.BookingService;
+import az.edu.bhos.finalProject.service.UserService;
+import az.edu.bhos.finalProject.logging.LoggingService;
+import az.edu.bhos.finalProject.entity.Booking;
+import az.edu.bhos.finalProject.entity.Passenger;
+
+import java.io.IOException;
+import java.util.List;
+
 public class BookingController {
+
+    private final BookingService bookingService;
+    private final UserService userService;
+    private final LoggingService loggingService;
+
+    public BookingController(BookingService bookingService, UserService userService, LoggingService loggingService) {
+        this.bookingService = bookingService;
+        this.userService = userService;
+        this.loggingService = loggingService;
+    }
+
+    private boolean ensureAuthenticated(String action) {
+        if (!userService.isAuthenticated()) {
+            loggingService.logAction("Unauthenticated attempt to " + action);
+            System.out.println("Please log in to proceed.");
+            return false;
+        }
+        return true;
+    }
+
+    public void viewBookings() {
+        if (!ensureAuthenticated("view bookings")) return;
+
+        Passenger currentPassenger = userService.getCurrentUser().getPassenger();
+        List<Booking> bookings = bookingService.getBookingsByPassenger(currentPassenger.getName(), currentPassenger.getSurname());
+        if (bookings.isEmpty()) {
+            System.out.println("No bookings found.");
+        } else {
+            bookings.forEach(System.out::println);
+        }
+
+        loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " viewed their bookings.");
+    }
+
+    public void createBooking(String flightID, List<Passenger> passengers) {
+        if (!ensureAuthenticated("create a booking")) return;
+
+        try {
+            Booking booking = new Booking(flightID, passengers);
+            if (bookingService.createBooking(booking)) {
+                loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " created a booking.");
+                System.out.println("Booking created successfully!");
+            }
+        } catch (IOException e) {
+            loggingService.logAction("Error creating booking: " + e.getMessage());
+            System.out.println("Error creating booking: " + e.getMessage());
+        }
+    }
+
+    public void deleteBooking(String bookingId) {
+        if (!ensureAuthenticated("delete a booking")) return;
+
+        try {
+            if (bookingService.deleteBookingById(bookingId)) {
+                loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " deleted booking with ID " + bookingId);
+                System.out.println("Booking deleted successfully!");
+            }
+        } catch (IOException e) {
+            loggingService.logAction("Error deleting booking with ID " + bookingId + ": " + e.getMessage());
+            System.out.println("Error deleting booking: " + e.getMessage());
+        }
+    }
 }
+
