@@ -6,5 +6,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface FlightDAO extends DAO<Flight>{
-    List<Flight> getAvailableFlights(String departure, String arrival, LocalDateTime date, int requestedSeats);//might add custom exception
+    List<Flight> getAvailableFlights(String departure, String arrival, LocalDateTime date, int requestedSeats);
 }

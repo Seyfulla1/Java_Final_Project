@@ -5,7 +5,6 @@ import az.edu.bhos.finalProject.exception.DuplicateUserException;
 import az.edu.bhos.finalProject.exception.UserNotFoundException;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 public interface UserDAO {
@@ -14,5 +13,5 @@ public interface UserDAO {
     boolean insert(User user) throws IOException, DuplicateUserException;
     boolean delete(User user) throws IOException, UserNotFoundException;
     boolean deleteByUsername(String username) throws IOException, UserNotFoundException;
-    public void save() throws IOException;
+    void save() throws IOException;
 }

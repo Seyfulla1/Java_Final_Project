@@ -1,14 +1,10 @@
 package az.edu.bhos.finalProject.console;
 
-import az.edu.bhos.finalProject.controller.BookingController;
-import az.edu.bhos.finalProject.controller.FlightController;
-import az.edu.bhos.finalProject.controller.UserController;
+import az.edu.bhos.finalProject.controller.*;
 import az.edu.bhos.finalProject.entity.Flight;
 import az.edu.bhos.finalProject.entity.Passenger;
 import az.edu.bhos.finalProject.exception.FlightNotFoundException;
 import az.edu.bhos.finalProject.logging.LoggingService;
-import az.edu.bhos.finalProject.service.UserService;
-import java.lang.IllegalArgumentException;
 import az.edu.bhos.finalProject.exception.InvalidOptionException;
 
 import java.time.LocalDateTime;
@@ -36,7 +32,7 @@ public class ConsoleMenu {
     }
 
     public void start() {
-        System.out.println("Welcome to the Flight Booking Console App!");
+        System.out.println("Salam Aleykum, Allah sizi qorusun!");
 
         while (true) {
             if (!userController.isAuthenticated()) {
@@ -97,7 +93,6 @@ public class ConsoleMenu {
     private void showFlightInfo() {
         System.out.print("Enter Flight ID: ");
         String flightID = scanner.nextLine();
-        //flightController.searchAvailableFlights("", "", null, 0);
         System.out.println("Showing info for flight: " + flightID);
         flightController.showFlightInfo(flightID);
     }
@@ -129,7 +124,6 @@ public class ConsoleMenu {
             return;
         }
         if (flightID.equals("0")) return;
-
 
         List<Passenger> passengers = new ArrayList<>();
         for (int i = 0; i < people; i++) {

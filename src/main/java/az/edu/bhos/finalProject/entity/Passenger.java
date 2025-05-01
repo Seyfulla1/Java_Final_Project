@@ -48,4 +48,3 @@ public class Passenger {
         return Objects.hash(name, surname);
     }
 }
-

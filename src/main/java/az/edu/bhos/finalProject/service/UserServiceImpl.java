@@ -7,8 +7,8 @@ import az.edu.bhos.finalProject.logging.LoggingService;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDAO userDAO;
-    private LoggingService loggingService;
+    private final UserDAO userDAO;
+    private final LoggingService loggingService;
     private User currentUser;
 
     public UserServiceImpl(UserDAO userDAO, LoggingService loggingService) {
