@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.IOException;
 import java.util.List;
+
 public class UserDAOImpl implements UserDAO {
     private final String filepath;
     private List<User> userList;

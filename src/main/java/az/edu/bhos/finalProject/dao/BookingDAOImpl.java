@@ -6,7 +6,6 @@ import az.edu.bhos.finalProject.util.Json;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDAOImpl implements BookingDAO {

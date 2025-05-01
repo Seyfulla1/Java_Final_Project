@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class User{
     private String username;
     private String password;
-    private Passenger passenger;
+    private final Passenger passenger;
 
     @JsonCreator
     public User(@JsonProperty("passenger") Passenger passenger,@JsonProperty("username") String username,@JsonProperty("password") String password) {

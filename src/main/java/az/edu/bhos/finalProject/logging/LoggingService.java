@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class LoggingService {
 
-    private final String logFile = "user_actions.log";
+    private final static String logFile = "user_actions.log";
 
     public void logAction(String action) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
