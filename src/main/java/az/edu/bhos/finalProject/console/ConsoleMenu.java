@@ -2,7 +2,9 @@ package az.edu.bhos.finalProject.console;
 
 import az.edu.bhos.finalProject.controller.BookingController;
 import az.edu.bhos.finalProject.controller.FlightController;
+import az.edu.bhos.finalProject.entity.Flight;
 import az.edu.bhos.finalProject.entity.Passenger;
+import az.edu.bhos.finalProject.exception.FlightNotFoundException;
 import az.edu.bhos.finalProject.logging.LoggingService;
 import az.edu.bhos.finalProject.service.UserService;
 import java.lang.IllegalArgumentException;
@@ -106,12 +108,25 @@ public class ConsoleMenu {
         int people = Integer.parseInt(scanner.nextLine());
 
         LocalDateTime date = LocalDateTime.parse(dateInput, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-
-        flightController.searchAvailableFlights("Kiev", destination, date, people);
-
+        List<Flight> availableFlights = new ArrayList<>();
+        try {
+            availableFlights=flightController.searchAvailableFlights("Kiev", destination, date, people);
+        }catch (FlightNotFoundException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+        if (availableFlights.isEmpty()) {
+            return;
+        }
         System.out.print("Enter Flight ID to book or 0 to cancel: ");
         String flightID = scanner.nextLine();
+        boolean trueFlight=availableFlights.stream().anyMatch(f -> f.getFlightID().equals(flightID));
+        if(!trueFlight) {
+            System.out.println("Invalid flight ID. Please try again.");
+            return;
+        }
         if (flightID.equals("0")) return;
+
 
         List<Passenger> passengers = new ArrayList<>();
         for (int i = 0; i < people; i++) {

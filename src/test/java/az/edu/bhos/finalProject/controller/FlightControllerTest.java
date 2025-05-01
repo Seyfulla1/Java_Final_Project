@@ -61,7 +61,7 @@ public class FlightControllerTest {
 
     @Test
     void testSearchAvailableFlights() {
-        LocalDateTime date = LocalDateTime.now().withSecond(0).withNano(0).plusHours(1);
+        LocalDateTime date = LocalDateTime.now().withSecond(0).withNano(0).plusHours(2);
         flightController.searchAvailableFlights("Baku", "London", date, 1);
         List<Flight> results = flightService.searchAvailableFlights("Baku", "London", date, 1);
         assertFalse(results.isEmpty());
