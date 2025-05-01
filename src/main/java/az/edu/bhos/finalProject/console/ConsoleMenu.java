@@ -38,6 +38,7 @@ public class ConsoleMenu {
         while (true) {
             if (!userService.isAuthenticated()) {
                 authenticate();
+                continue;
             }
 
             printMenu();
@@ -91,7 +92,7 @@ public class ConsoleMenu {
     private void showFlightInfo() {
         System.out.print("Enter Flight ID: ");
         String flightID = scanner.nextLine();
-        flightController.searchAvailableFlights("", "", null, 0);  // dummy usage to keep things uniform
+        //flightController.searchAvailableFlights("", "", null, 0);
         System.out.println("Showing info for flight: " + flightID);
         flightController.showFlightInfo(flightID);
     }

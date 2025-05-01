@@ -1,0 +1,71 @@
+[ {
+  "passenger" : {
+    "name" : "Name1",
+    "surname" : "Surname1"
+  },
+  "username" : "user1",
+  "password" : "pass1"
+}, {
+  "passenger" : {
+    "name" : "Name2",
+    "surname" : "Surname2"
+  },
+  "username" : "user2",
+  "password" : "pass2"
+}, {
+  "passenger" : {
+    "name" : "Name3",
+    "surname" : "Surname3"
+  },
+  "username" : "user3",
+  "password" : "pass3"
+}, {
+  "passenger" : {
+    "name" : "Name4",
+    "surname" : "Surname4"
+  },
+  "username" : "user4",
+  "password" : "pass4"
+}, {
+  "passenger" : {
+    "name" : "Name5",
+    "surname" : "Surname5"
+  },
+  "username" : "user5",
+  "password" : "pass5"
+}, {
+  "passenger" : {
+    "name" : "Name6",
+    "surname" : "Surname6"
+  },
+  "username" : "user6",
+  "password" : "pass6"
+}, {
+  "passenger" : {
+    "name" : "Name7",
+    "surname" : "Surname7"
+  },
+  "username" : "user7",
+  "password" : "pass7"
+}, {
+  "passenger" : {
+    "name" : "Name8",
+    "surname" : "Surname8"
+  },
+  "username" : "user8",
+  "password" : "pass8"
+}, {
+  "passenger" : {
+    "name" : "Name9",
+    "surname" : "Surname9"
+  },
+  "username" : "user9",
+  "password" : "pass9"
+}, {
+  "passenger" : {
+    "name" : "Name10",
+    "surname" : "Surname10"
+  },
+  "username" : "user10",
+  "password" : "pass10"
+} ]
