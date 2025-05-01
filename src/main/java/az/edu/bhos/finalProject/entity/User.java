@@ -1,11 +1,15 @@
 package az.edu.bhos.finalProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User{
     private String username;
     private String password;
     private Passenger passenger;
 
-    public User(Passenger passenger, String username, String password) {
+    @JsonCreator
+    public User(@JsonProperty("passenger") Passenger passenger,@JsonProperty("username") String username,@JsonProperty("password") String password) {
         this.passenger = passenger;
         this.username = username;
         this.password = password;

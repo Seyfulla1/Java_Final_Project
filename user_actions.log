@@ -1,0 +1,56 @@
+2025-05-01 13:42:17 - Failed login attempt for user user1
+2025-05-01 13:43:38 - Failed login attempt for user user1
+2025-05-01 13:43:44 - Failed login attempt for user user1
+2025-05-01 13:43:50 - Failed login attempt for user asndjk
+2025-05-01 13:44:32 - User user3 logged in successfully.
+2025-05-01 13:44:38 - Exception occurred: Invalid menu option: 8
+2025-05-01 13:44:46 - User user3 logged out.
+2025-05-01 13:45:04 - Failed login attempt for user user3
+2025-05-01 13:45:10 - User user3 logged in successfully.
+2025-05-01 13:45:19 - User user3 viewed all flights.
+2025-05-01 13:45:44 - User user3 searched for flights.
+2025-05-01 13:45:44 - User user3 viewed flight FL042
+2025-05-01 13:46:02 - User user3 searched for flights.
+2025-05-01 13:46:02 - Failed to find flight asdbj
+2025-05-01 13:52:36 - User user3 logged in successfully.
+2025-05-01 13:52:43 - User user3 searched for flights.
+2025-05-01 13:52:43 - Failed to find flight 2
+2025-05-01 13:52:45 - User user3 viewed all flights.
+2025-05-01 13:52:52 - User user3 searched for flights.
+2025-05-01 13:52:52 - User user3 viewed flight FL039
+2025-05-01 13:53:07 - User user3 searched for flights.
+2025-05-01 13:53:07 - Failed to find flight habwdh
+2025-05-01 13:55:17 - Failed login attempt for user user3
+2025-05-01 13:55:20 - Failed login attempt for user user
+2025-05-01 13:55:25 - User user3 logged in successfully.
+2025-05-01 13:55:27 - User user3 logged out.
+2025-05-01 13:56:09 - User user4 logged in successfully.
+2025-05-01 13:56:18 - User user4 searched for flights.
+2025-05-01 13:56:18 - User user4 viewed flight FL039
+2025-05-01 13:56:18 - User user4 viewed flight FL039
+2025-05-01 13:56:48 - Exception occurred: Invalid menu option: asdhbsd
+2025-05-01 13:56:52 - User user4 searched for flights.
+2025-05-01 13:56:52 - Failed to find flight ahjdhs
+2025-05-01 13:58:47 - User user5 logged in successfully.
+2025-05-01 13:58:49 - User user5 viewed all flights.
+2025-05-01 13:58:55 - User user5 searched for flights.
+2025-05-01 13:58:55 - User user5 viewed flight FL039
+2025-05-01 13:58:55 - User user5 viewed flight FL039
+2025-05-01 14:00:57 - User user7 logged in successfully.
+2025-05-01 14:01:02 - User user7 searched for flights.
+2025-05-01 14:01:02 - User user7 viewed flight FL039
+2025-05-01 14:01:09 - User user7 searched for flights.
+2025-05-01 14:01:09 - Failed to find flight ajksdb
+2025-05-01 14:01:32 - User user8 logged in successfully.
+2025-05-01 14:01:40 - User user8 searched for flights.
+2025-05-01 14:01:40 - User user8 viewed flight FL039
+2025-05-01 14:04:19 - User user3 logged in successfully.
+2025-05-01 14:04:24 - User user3 searched for flights.
+2025-05-01 14:04:24 - User user3 viewed flight FL039
+2025-05-01 14:04:33 - User user3 searched for flights.
+2025-05-01 14:04:33 - User user3 viewed flight FL040
+2025-05-01 14:06:55 - User user3 logged in successfully.
+2025-05-01 14:07:00 - User user3 viewed flight FL037
+2025-05-01 14:07:13 - Failed to find flight Fasduhsaudh
+2025-05-01 14:07:22 - User user3 viewed all flights.
+2025-05-01 14:08:30 - User user3 searched for flights.

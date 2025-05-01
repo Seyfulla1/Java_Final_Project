@@ -1,0 +1,351 @@
+[ {
+  "flightID" : "FL001",
+  "departure" : "Kiev",
+  "destination" : "City1",
+  "departureDate" : [ 2025, 6, 1, 10, 0 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL002",
+  "departure" : "Kiev",
+  "destination" : "City2",
+  "departureDate" : [ 2025, 6, 1, 10, 29 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL003",
+  "departure" : "Kiev",
+  "destination" : "City3",
+  "departureDate" : [ 2025, 6, 1, 10, 58 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL004",
+  "departure" : "Kiev",
+  "destination" : "City4",
+  "departureDate" : [ 2025, 6, 1, 11, 28 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL005",
+  "departure" : "Kiev",
+  "destination" : "City5",
+  "departureDate" : [ 2025, 6, 1, 11, 57 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL006",
+  "departure" : "Kiev",
+  "destination" : "City6",
+  "departureDate" : [ 2025, 6, 1, 12, 26 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL007",
+  "departure" : "Kiev",
+  "destination" : "City7",
+  "departureDate" : [ 2025, 6, 1, 12, 56 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL008",
+  "departure" : "Kiev",
+  "destination" : "City8",
+  "departureDate" : [ 2025, 6, 1, 13, 25 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL009",
+  "departure" : "Kiev",
+  "destination" : "City9",
+  "departureDate" : [ 2025, 6, 1, 13, 55 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL010",
+  "departure" : "Kiev",
+  "destination" : "City10",
+  "departureDate" : [ 2025, 6, 1, 14, 24 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL011",
+  "departure" : "Kiev",
+  "destination" : "City1",
+  "departureDate" : [ 2025, 6, 1, 14, 53 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL012",
+  "departure" : "Kiev",
+  "destination" : "City2",
+  "departureDate" : [ 2025, 6, 1, 15, 23 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL013",
+  "departure" : "Kiev",
+  "destination" : "City3",
+  "departureDate" : [ 2025, 6, 1, 15, 52 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL014",
+  "departure" : "Kiev",
+  "destination" : "City4",
+  "departureDate" : [ 2025, 6, 1, 16, 22 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL015",
+  "departure" : "Kiev",
+  "destination" : "City5",
+  "departureDate" : [ 2025, 6, 1, 16, 51 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL016",
+  "departure" : "Kiev",
+  "destination" : "City6",
+  "departureDate" : [ 2025, 6, 1, 17, 20 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL017",
+  "departure" : "Kiev",
+  "destination" : "City7",
+  "departureDate" : [ 2025, 6, 1, 17, 50 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL018",
+  "departure" : "Kiev",
+  "destination" : "City8",
+  "departureDate" : [ 2025, 6, 1, 18, 19 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL019",
+  "departure" : "Kiev",
+  "destination" : "City9",
+  "departureDate" : [ 2025, 6, 1, 18, 48 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL020",
+  "departure" : "Kiev",
+  "destination" : "City10",
+  "departureDate" : [ 2025, 6, 1, 19, 18 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL021",
+  "departure" : "Kiev",
+  "destination" : "City1",
+  "departureDate" : [ 2025, 6, 1, 19, 47 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL022",
+  "departure" : "Kiev",
+  "destination" : "City2",
+  "departureDate" : [ 2025, 6, 1, 20, 17 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL023",
+  "departure" : "Kiev",
+  "destination" : "City3",
+  "departureDate" : [ 2025, 6, 1, 20, 46 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL024",
+  "departure" : "Kiev",
+  "destination" : "City4",
+  "departureDate" : [ 2025, 6, 1, 21, 15 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL025",
+  "departure" : "Kiev",
+  "destination" : "City5",
+  "departureDate" : [ 2025, 6, 1, 21, 45 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL026",
+  "departure" : "Kiev",
+  "destination" : "City6",
+  "departureDate" : [ 2025, 6, 1, 22, 14 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL027",
+  "departure" : "Kiev",
+  "destination" : "City7",
+  "departureDate" : [ 2025, 6, 1, 22, 44 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL028",
+  "departure" : "Kiev",
+  "destination" : "City8",
+  "departureDate" : [ 2025, 6, 1, 23, 13 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL029",
+  "departure" : "Kiev",
+  "destination" : "City9",
+  "departureDate" : [ 2025, 6, 1, 23, 42 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL030",
+  "departure" : "Kiev",
+  "destination" : "City10",
+  "departureDate" : [ 2025, 6, 2, 0, 12 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL031",
+  "departure" : "Kiev",
+  "destination" : "City1",
+  "departureDate" : [ 2025, 6, 2, 0, 41 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL032",
+  "departure" : "Kiev",
+  "destination" : "City2",
+  "departureDate" : [ 2025, 6, 2, 1, 11 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL033",
+  "departure" : "Kiev",
+  "destination" : "City3",
+  "departureDate" : [ 2025, 6, 2, 1, 40 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL034",
+  "departure" : "Kiev",
+  "destination" : "City4",
+  "departureDate" : [ 2025, 6, 2, 2, 9 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL035",
+  "departure" : "Kiev",
+  "destination" : "City5",
+  "departureDate" : [ 2025, 6, 2, 2, 39 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL036",
+  "departure" : "Kiev",
+  "destination" : "City6",
+  "departureDate" : [ 2025, 6, 2, 3, 8 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL037",
+  "departure" : "Kiev",
+  "destination" : "City7",
+  "departureDate" : [ 2025, 6, 2, 3, 37 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL038",
+  "departure" : "Kiev",
+  "destination" : "City8",
+  "departureDate" : [ 2025, 6, 2, 4, 7 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL039",
+  "departure" : "Kiev",
+  "destination" : "City9",
+  "departureDate" : [ 2025, 6, 2, 4, 36 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL040",
+  "departure" : "Kiev",
+  "destination" : "City10",
+  "departureDate" : [ 2025, 6, 2, 5, 6 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL041",
+  "departure" : "Kiev",
+  "destination" : "City1",
+  "departureDate" : [ 2025, 6, 2, 5, 35 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL042",
+  "departure" : "Kiev",
+  "destination" : "City2",
+  "departureDate" : [ 2025, 6, 2, 6, 4 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL043",
+  "departure" : "Kiev",
+  "destination" : "City3",
+  "departureDate" : [ 2025, 6, 2, 6, 34 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL044",
+  "departure" : "Kiev",
+  "destination" : "City4",
+  "departureDate" : [ 2025, 6, 2, 7, 3 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL045",
+  "departure" : "Kiev",
+  "destination" : "City5",
+  "departureDate" : [ 2025, 6, 2, 7, 33 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL046",
+  "departure" : "Kiev",
+  "destination" : "City6",
+  "departureDate" : [ 2025, 6, 2, 8, 2 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL047",
+  "departure" : "Kiev",
+  "destination" : "City7",
+  "departureDate" : [ 2025, 6, 2, 8, 31 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL048",
+  "departure" : "Kiev",
+  "destination" : "City8",
+  "departureDate" : [ 2025, 6, 2, 9, 1 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL049",
+  "departure" : "Kiev",
+  "destination" : "City9",
+  "departureDate" : [ 2025, 6, 2, 9, 30 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+}, {
+  "flightID" : "FL050",
+  "departure" : "Kiev",
+  "destination" : "City10",
+  "departureDate" : [ 2025, 6, 2, 10, 0 ],
+  "capacity" : 150,
+  "availableSeats" : 150
+} ]
