@@ -78,7 +78,7 @@ public class Main {
         UserService userService = new UserServiceImpl(userDAO, loggingService);
 
         FlightController flightController = new FlightController(flightService, userService, loggingService);
-        BookingController bookingController = new BookingController(bookingService, userService, loggingService);
+        BookingController bookingController = new BookingController(bookingService, userService, loggingService,flightService);
 
         ConsoleMenu menu = new ConsoleMenu(userService, flightController, bookingController, loggingService);
         menu.start();

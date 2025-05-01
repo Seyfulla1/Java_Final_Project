@@ -1,5 +1,6 @@
 package az.edu.bhos.finalProject.controller;
 
+import az.edu.bhos.finalProject.exception.FlightNotFoundException;
 import az.edu.bhos.finalProject.service.FlightService;
 import az.edu.bhos.finalProject.service.UserService;
 import az.edu.bhos.finalProject.logging.LoggingService;
@@ -39,17 +40,15 @@ public class FlightController {
         loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " viewed all flights.");
     }
 
-    public void searchAvailableFlights(String departure, String destination, LocalDateTime date, int requestedSeats) {
-        if (!ensureAuthenticated("search for flights")) return;
-
+    public List<Flight> searchAvailableFlights(String departure, String destination, LocalDateTime date, int requestedSeats) throws FlightNotFoundException {
         List<Flight> availableFlights = flightService.searchAvailableFlights(departure, destination, date, requestedSeats);
         if (availableFlights.isEmpty()) {
-            System.out.println("No available flights found.");
+            throw new FlightNotFoundException("No available flights found for the given criteria!");
         } else {
             availableFlights.forEach(System.out::println);
         }
-
         loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " searched for flights.");
+        return availableFlights;
     }
 
     public void bookFlight(String flightID, int requestedSeats) {
@@ -91,5 +90,7 @@ public class FlightController {
             loggingService.logAction("Failed to find flight " + flightID);
         }
     }
+
+
 
 }

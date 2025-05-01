@@ -1,7 +1,6 @@
 package az.edu.bhos.finalProject.controller;
 
-import az.edu.bhos.finalProject.service.BookingService;
-import az.edu.bhos.finalProject.service.UserService;
+import az.edu.bhos.finalProject.service.*;
 import az.edu.bhos.finalProject.logging.LoggingService;
 import az.edu.bhos.finalProject.entity.Booking;
 import az.edu.bhos.finalProject.entity.Passenger;
@@ -15,11 +14,13 @@ public class BookingController {
     private final BookingService bookingService;
     private final UserService userService;
     private final LoggingService loggingService;
+    private final FlightService flightService;
 
-    public BookingController(BookingService bookingService, UserService userService, LoggingService loggingService) {
+    public BookingController(BookingService bookingService, UserService userService, LoggingService loggingService, FlightService flightService) {
         this.bookingService = bookingService;
         this.userService = userService;
         this.loggingService = loggingService;
+        this.flightService = flightService;
     }
 
     private boolean ensureAuthenticated(String action) {
@@ -52,8 +53,10 @@ public class BookingController {
             String bookingId = UUID.randomUUID().toString();
 
             Booking booking = new Booking(bookingId, flightID, passengers);
-            if (bookingService.createBooking(booking)) {
+            if (flightService.bookFlight(flightID, passengers.size())) {
+                bookingService.createBooking(booking);
                 loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " created a booking.");
+
                 System.out.println("Booking created successfully!");
             }
         } catch (IOException e) {
@@ -61,7 +64,7 @@ public class BookingController {
             System.out.println("Error creating booking: " + e.getMessage());
         }
     }
-    
+
     public void deleteBooking(String bookingId) {
         if (!ensureAuthenticated("delete a booking")) return;
 
@@ -75,5 +78,5 @@ public class BookingController {
             System.out.println("Error deleting booking: " + e.getMessage());
         }
     }
-}
 
+}
