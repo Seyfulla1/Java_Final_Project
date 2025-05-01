@@ -8,6 +8,7 @@ import az.edu.bhos.finalProject.entity.Passenger;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 public class BookingController {
 
@@ -48,7 +49,9 @@ public class BookingController {
         if (!ensureAuthenticated("create a booking")) return;
 
         try {
-            Booking booking = new Booking(flightID, passengers);
+            String bookingId = UUID.randomUUID().toString();
+
+            Booking booking = new Booking(bookingId, flightID, passengers);
             if (bookingService.createBooking(booking)) {
                 loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " created a booking.");
                 System.out.println("Booking created successfully!");
@@ -58,7 +61,7 @@ public class BookingController {
             System.out.println("Error creating booking: " + e.getMessage());
         }
     }
-
+    
     public void deleteBooking(String bookingId) {
         if (!ensureAuthenticated("delete a booking")) return;
 
