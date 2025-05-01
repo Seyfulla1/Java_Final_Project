@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FlightServiceImplTest {
@@ -51,7 +52,7 @@ public class FlightServiceImplTest {
 
     @Test
     public void testSearchAvailableFlights() {
-        LocalDate date = LocalDate.of(2025, 5, 15);
+        LocalDateTime date = LocalDateTime.of(2025, 5, 15,0,0);
         List<Flight> availableFlights = flightService.searchAvailableFlights("Baku", "New York", date, 2);
         assertNotNull(availableFlights);
         assertFalse(availableFlights.isEmpty());

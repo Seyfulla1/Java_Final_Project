@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Flight {
 
@@ -13,7 +14,7 @@ public class Flight {
 
     private final String destination;
 
-    private final LocalDate departureDate;
+    private final LocalDateTime departureDate;
 
     private final int capacity;
     @JsonProperty("availableSeats")
@@ -23,7 +24,7 @@ public class Flight {
     public Flight(@JsonProperty("flightID") String flightID,
                   @JsonProperty("departure") String departure,
                   @JsonProperty("destination") String destination,
-                  @JsonProperty("departureDate") LocalDate departureDate,
+                  @JsonProperty("departureDate") LocalDateTime departureDate,
                   @JsonProperty("capacity") int capacity) {
 
         this.flightID = flightID;
@@ -46,7 +47,7 @@ public class Flight {
         return destination;
     }
 
-    public LocalDate getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 

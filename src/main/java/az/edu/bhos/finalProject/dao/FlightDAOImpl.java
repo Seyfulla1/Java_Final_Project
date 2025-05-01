@@ -6,7 +6,7 @@ import az.edu.bhos.finalProject.util.Json;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FlightDAOImpl implements FlightDAO {
@@ -67,7 +67,7 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
-    public List<Flight> getAvailableFlights(String departure, String destination, LocalDate date, int requestedSeats){
+    public List<Flight> getAvailableFlights(String departure, String destination, LocalDateTime date, int requestedSeats){
         return flightList.stream().
                 filter(f->f.getDeparture().equals(departure)&&
                         f.getDestination().equals(destination)&&
