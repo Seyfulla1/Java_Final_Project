@@ -1,63 +1,82 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.*;
+package az.edu.bhos.finalProject.controller;
 
-import az.edu.bhos.finalProject.service.BookingService;
-import az.edu.bhos.finalProject.service.UserService;
-import az.edu.bhos.finalProject.logging.LoggingService;
+import az.edu.bhos.finalProject.dao.BookingDAOImpl;
+import az.edu.bhos.finalProject.dao.UserDAOImpl;
 import az.edu.bhos.finalProject.entity.Booking;
 import az.edu.bhos.finalProject.entity.Passenger;
+import az.edu.bhos.finalProject.entity.User;
+import az.edu.bhos.finalProject.logging.LoggingService;
+import az.edu.bhos.finalProject.service.BookingService;
+import az.edu.bhos.finalProject.service.BookingServiceImpl;
+import az.edu.bhos.finalProject.service.UserService;
+import az.edu.bhos.finalProject.service.UserServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
-class BookingControllerTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+public class BookingControllerTest {
 
     private BookingController bookingController;
-    private BookingService mockBookingService;
-    private UserService mockUserService;
-    private LoggingService mockLoggingService;
+    private BookingService bookingService;
+    private UserService userService;
+    private LoggingService loggingService;
+
+    private final String testBookingFile = "src\\test\\java\\az\\edu\\bhos\\finalProject\\controller\\test_bookings.json";
+    private final String testUserFile = "src\\test\\java\\az\\edu\\bhos\\finalProject\\controller\\test_users.json";
 
     @BeforeEach
-    void setUp() {
-        mockBookingService = mock(BookingService.class);
-        mockUserService = mock(UserService.class);
-        mockLoggingService = mock(LoggingService.class);
+    void setUp() throws IOException {
+        new File(testBookingFile).delete();
+        new File(testUserFile).delete();
 
-        bookingController = new BookingController(mockBookingService, mockUserService, mockLoggingService);
+        BookingDAOImpl bookingDAO = new BookingDAOImpl(testBookingFile);
+        bookingService = new BookingServiceImpl(bookingDAO);
 
-        when(mockUserService.isAuthenticated()).thenReturn(true); // Mock authenticated user
-        when(mockUserService.getCurrentUser())
-                .thenReturn(new az.edu.bhos.finalProject.entity.User("testUser", new Passenger("John", "Doe")));
+        UserDAOImpl userDAO = new UserDAOImpl(testUserFile);
+        loggingService = new LoggingService();
+        userService = new UserServiceImpl(userDAO, loggingService);
+
+        Passenger passenger = new Passenger("John", "Doe");
+        User user = new User(passenger, "johndoe", "pass123");
+        userDAO.insert(user);
+        userService.authenticate("johndoe", "pass123");
+
+        bookingController = new BookingController(bookingService, userService, loggingService);
     }
 
     @Test
-    void testViewBookings_NoBookingsFound() {
-        when(mockBookingService.getBookingsByPassenger("John", "Doe"))
-                .thenReturn(List.of()); // Simulate no bookings
+    void testCreateAndViewBooking() {
+        Passenger passenger = userService.getCurrentUser().getPassenger();
+        bookingController.createBooking("FL001", List.of(passenger));
 
+        List<Booking> bookings = bookingService.getBookingsByPassenger("John", "Doe");
+        assertEquals(1, bookings.size());
+        assertEquals("FL001", bookings.get(0).getFlightId());
+    }
+
+    @Test
+    void testDeleteBooking() throws IOException {
+        Passenger passenger = userService.getCurrentUser().getPassenger();
+        String bookingId = UUID.randomUUID().toString();
+        Booking booking = new Booking(bookingId, "FL002", List.of(passenger));
+        bookingService.createBooking(booking);
+
+        assertEquals(1, bookingService.getAllBookings().size());
+
+        bookingController.deleteBooking(bookingId);
+
+        assertEquals(0, bookingService.getAllBookings().size());
+    }
+
+    @Test
+    void testViewBookingsWhenEmpty() {
         bookingController.viewBookings();
-
-        verify(mockLoggingService).logAction("User testUser viewed their bookings.");
-    }
-
-    @Test
-    void testCreateBooking_Success() {
-        List<Passenger> passengers = List.of(new Passenger("Jane", "Doe"));
-        Booking booking = new Booking("FL123", passengers);
-
-        when(mockBookingService.createBooking(booking)).thenReturn(true);
-
-        bookingController.createBooking("FL123", passengers);
-
-        verify(mockLoggingService).logAction("User testUser created a booking.");
-    }
-
-    @Test
-    void testDeleteBooking_Success() {
-        when(mockBookingService.deleteBookingById("BK123")).thenReturn(true);
-
-        bookingController.deleteBooking("BK123");
-
-        verify(mockLoggingService).logAction("User testUser deleted booking with ID BK123");
+        assertTrue(bookingService.getBookingsByPassenger("John", "Doe").isEmpty());
     }
 }
