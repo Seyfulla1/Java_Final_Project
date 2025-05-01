@@ -1,6 +1,7 @@
 package az.edu.bhos.finalProject.service;
 
 import az.edu.bhos.finalProject.dao.UserDAOImpl;
+import az.edu.bhos.finalProject.entity.Passenger;
 import az.edu.bhos.finalProject.entity.User;
 import az.edu.bhos.finalProject.exception.UserNotFoundException;
 import az.edu.bhos.finalProject.logging.LoggingService;
@@ -20,7 +21,7 @@ public class UserServiceImplTest {
     void setUp() throws IOException {
         UserDAOImpl userDAO = new UserDAOImpl(TEST_FILE);
         userDAO.getAll().clear();
-        userDAO.getAll().add(new User("Test", "User", "testuser", "password123"));
+        userDAO.getAll().add(new User(new Passenger("Test", "User"), "testuser", "password123"));
         userDAO.save();
 
         LoggingService loggingService = new LoggingService();

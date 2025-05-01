@@ -7,6 +7,7 @@ import az.edu.bhos.finalProject.exception.FlightNotFoundException;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FlightServiceImpl implements FlightService {
@@ -31,7 +32,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> searchAvailableFlights(String departure, String destination, LocalDate date, int requestedSeats) {
+    public List<Flight> searchAvailableFlights(String departure, String destination, LocalDateTime date, int requestedSeats) {
         return flightDAO.getAvailableFlights(departure, destination, date, requestedSeats);
     }
 

@@ -5,7 +5,7 @@ import az.edu.bhos.finalProject.entity.Booking;
 import java.io.IOException;
 import java.util.List;
 
-public interface BookingSerivce {
+public interface BookingService {
     Booking getBookingById(String id);
 
     List<Booking> getAllBookings();

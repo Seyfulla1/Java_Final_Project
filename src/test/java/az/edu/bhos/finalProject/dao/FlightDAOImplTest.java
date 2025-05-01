@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FlightDAOImplTest {
     private static FlightDAOImpl flightDAO;
     private static final String testFilePath = "src\\test\\java\\az\\edu\\bhos\\finalProject\\dao\\test_flights.json";
+    private static final LocalDateTime baseTime = LocalDateTime.of(2025, 5, 1, 10, 0);
     @BeforeEach
     void setUp() throws IOException {
         File file = new File(testFilePath);
@@ -24,16 +26,17 @@ class FlightDAOImplTest {
         }
         file.createNewFile();
         flightDAO = new FlightDAOImpl(testFilePath);
-        Flight flight1 = new Flight("F123", "New York", "Los Angeles", LocalDate.of(2025,5,10),100);
-        Flight flight2 = new Flight("F124", "Chicago", "Miami", LocalDate.of(2025,6,15),50);
-        Flight flight3 = new Flight("F125", "Seattle", "San Francisco", LocalDate.of(2025,7,20),75);
-        Flight flight4 = new Flight("F126", "Boston", "Austin", LocalDate.of(2025,8,25),200);
-        Flight flight5 = new Flight("F127", "Denver", "Phoenix", LocalDate.of(2025,9,30),150);
-        Flight flight6 = new Flight("F128", "Orlando", "Las Vegas", LocalDate.of(2025,10,5),120);
-        Flight flight7 = new Flight("F129", "Atlanta", "Dallas", LocalDate.of(2025,11,10),80);
-        Flight flight8 = new Flight("F130", "San Diego", "Seattle", LocalDate.of(2025,12,15),60);
-        Flight flight9 = new Flight("F131", "Philadelphia", "Newark", LocalDate.of(2025,1,20),90);
-        Flight flight10 = new Flight("F132", "Detroit", "Cleveland", LocalDate.of(2025,2,25),110);
+
+        Flight flight1 = new Flight("F123", "New York", "Los Angeles", baseTime.plusHours(3),100);
+        Flight flight2 = new Flight("F124", "Chicago", "Miami", baseTime.plusHours(2),50);
+        Flight flight3 = new Flight("F125", "Seattle", "San Francisco", baseTime.plusHours(22),75);
+        Flight flight4 = new Flight("F126", "Boston", "Austin", baseTime.plusHours(1),200);
+        Flight flight5 = new Flight("F127", "Denver", "Phoenix", baseTime.plusHours(21),150);
+        Flight flight6 = new Flight("F128", "Orlando", "Las Vegas", baseTime.plusHours(6),120);
+        Flight flight7 = new Flight("F129", "Atlanta", "Dallas", baseTime.plusHours(1),80);
+        Flight flight8 = new Flight("F130", "San Diego", "Seattle", baseTime.plusHours(16),60);
+        Flight flight9 = new Flight("F131", "Philadelphia", "Newark", baseTime.plusHours(11),90);
+        Flight flight10 = new Flight("F132", "Detroit", "Cleveland", baseTime.plusHours(10),110);
         List<Flight> flights = new ArrayList<>();
         flights.add(flight1);
         flights.add(flight2);
@@ -72,20 +75,20 @@ class FlightDAOImplTest {
 
     @Test
     void insert() throws IOException{
-        Flight flight= new Flight("J2251","Baku","Nakhchivan",LocalDate.of(2025,5,10),100);
+        Flight flight= new Flight("J2251","Baku","Nakhchivan",baseTime.plusHours(2),100);
         flightDAO.insert(flight);
         assertEquals(flight.getFlightID(), flightDAO.getById(flight.getFlightID()).getFlightID());
     }
 
     @Test
     void deleteInvalid() {
-        Flight flight = new Flight("F188", "San Diego", "Seattle", LocalDate.of(2025, 12, 15), 60);
+        Flight flight = new Flight("F188", "San Diego", "Seattle", baseTime.plusHours(1), 60);
         assertThrows(FlightNotFoundException.class, () -> flightDAO.delete(flight));
     }
 
     @Test
     void deleteValid() throws IOException {
-        Flight flight = new Flight("F129", "Atlanta", "Dallas", LocalDate.of(2025,11,10),80);
+        Flight flight = new Flight("F129", "Atlanta", "Dallas", baseTime.plusHours(1),80);
         flightDAO.delete(flight);
         assertThrows(FlightNotFoundException.class, () -> flightDAO.getById(flight.getFlightID()));
     }
@@ -108,10 +111,10 @@ class FlightDAOImplTest {
     void getAvailableFlights() throws IOException {
         String departure = "New York";
         String destination = "Los Angeles";
-        LocalDate date = LocalDate.of(2025, 5, 10);
-        Flight f1= new Flight("A123", "New York", "Los Angeles", LocalDate.of(2025, 5, 10), 63);
-        Flight f2= new Flight("A124", "New York", "Los Angeles", LocalDate.of(2025, 5, 10), 45);
-        Flight f3= new Flight("A125", "New York", "Los Angeles", LocalDate.of(2025, 5, 10), 50);
+        LocalDateTime date = baseTime.plusHours(3);
+        Flight f1= new Flight("A123", "New York", "Los Angeles", date, 63);
+        Flight f2= new Flight("A124", "New York", "Los Angeles", date, 45);
+        Flight f3= new Flight("A125", "New York", "Los Angeles", date, 50);
         flightDAO.insert(f1);
         flightDAO.insert(f2);
         flightDAO.insert(f3);

@@ -3,7 +3,7 @@ package az.edu.bhos.finalProject.service;
 import az.edu.bhos.finalProject.entity.Flight;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface FlightService {
@@ -11,7 +11,7 @@ public interface FlightService {
 
     Flight getFlightById(String flightID);
 
-    List<Flight> searchAvailableFlights(String departure, String destination, LocalDate date, int requestedSeats);
+    List<Flight> searchAvailableFlights(String departure, String destination, LocalDateTime date, int requestedSeats);
 
     boolean bookFlight(String flightID, int requestedSeats) throws IOException;
 

@@ -7,7 +7,7 @@ import az.edu.bhos.finalProject.exception.BookingNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-public class BookingServiceImpl implements BookingSerivce {
+public class BookingServiceImpl implements BookingService {
     private final BookingDAO bookingDAO;
 
     public BookingServiceImpl(BookingDAO bookingDAO) {
