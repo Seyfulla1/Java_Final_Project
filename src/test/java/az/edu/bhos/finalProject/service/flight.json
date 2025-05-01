@@ -3,14 +3,14 @@
     "flightID": "F001",
     "departure": "Baku",
     "destination": "New York",
-    "departureDate": "2025-05-15",
+    "departureDate": [2025, 5, 15, 10, 30],
     "availableSeats": 10
   },
   {
     "flightID": "F002",
     "departure": "London",
     "destination": "Paris",
-    "departureDate": "2025-05-16",
+    "departureDate": [2025, 5, 15, 16, 30],
     "availableSeats": 5
   }
 ]
