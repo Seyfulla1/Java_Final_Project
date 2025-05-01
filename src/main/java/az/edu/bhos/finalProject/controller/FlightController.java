@@ -79,4 +79,16 @@ public class FlightController {
             System.out.println("Error canceling booking: " + e.getMessage());
         }
     }
+    public void showFlightInfo(String flightID) {
+        if (!ensureAuthenticated("view flight info")) return;
+
+        try {
+            Flight flight = flightService.getFlightById(flightID);
+            System.out.println(flight);
+            loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " viewed flight " + flightID);
+        } catch (RuntimeException e) {
+            System.out.println("Flight not found: " + e.getMessage());
+            loggingService.logAction("Failed to find flight " + flightID);
+        }
+    }
 }
