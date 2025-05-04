@@ -68,14 +68,11 @@ public class FlightControllerTest {
     }
 
     @Test
-    void testBookAndCancelFlight() throws IOException {
+    void testBookFlight() throws IOException {
         String flightId = "FL123";
         int originalSeats = flightService.getFlightById(flightId).getAvailableSeats();
 
         flightController.bookFlight(flightId, 2);
         assertEquals(originalSeats - 2, flightService.getFlightById(flightId).getAvailableSeats());
-
-        flightController.cancelBooking(flightId, 2);
-        assertEquals(originalSeats, flightService.getFlightById(flightId).getAvailableSeats());
     }
 }

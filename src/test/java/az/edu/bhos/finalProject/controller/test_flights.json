@@ -1,0 +1,8 @@
+[ {
+  "flightID" : "FL123",
+  "departure" : "Baku",
+  "destination" : "London",
+  "departureDate" : [ 2025, 5, 4, 23, 17 ],
+  "capacity" : 100,
+  "availableSeats" : 98
+} ]

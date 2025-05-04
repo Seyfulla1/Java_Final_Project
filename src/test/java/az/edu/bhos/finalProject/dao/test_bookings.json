@@ -1,0 +1,82 @@
+[ {
+  "passengers" : [ {
+    "name" : "John",
+    "surname" : "Doe"
+  }, {
+    "name" : "Jane",
+    "surname" : "Smith"
+  }, {
+    "name" : "Alice",
+    "surname" : "Johnson"
+  }, {
+    "name" : "Bob",
+    "surname" : "Brown"
+  } ],
+  "bookingId" : "1",
+  "flightId" : "F123"
+}, {
+  "passengers" : [ {
+    "name" : "Charlie",
+    "surname" : "Davis"
+  }, {
+    "name" : "David",
+    "surname" : "Wilson"
+  }, {
+    "name" : "Alice",
+    "surname" : "Johnson"
+  } ],
+  "bookingId" : "2",
+  "flightId" : "F124"
+}, {
+  "passengers" : [ {
+    "name" : "Ava",
+    "surname" : "Garcia"
+  }, {
+    "name" : "Ethan",
+    "surname" : "Martinez"
+  }, {
+    "name" : "Sophia",
+    "surname" : "Hernandez"
+  }, {
+    "name" : "Liam",
+    "surname" : "Lopez"
+  } ],
+  "bookingId" : "3",
+  "flightId" : "F123"
+}, {
+  "passengers" : [ {
+    "name" : "John",
+    "surname" : "Doe"
+  }, {
+    "name" : "David",
+    "surname" : "Wilson"
+  }, {
+    "name" : "John",
+    "surname" : "Hernanez"
+  }, {
+    "name" : "Ageli",
+    "surname" : "Veliyev"
+  }, {
+    "name" : "Ali",
+    "surname" : "Kurcatov"
+  } ],
+  "bookingId" : "4",
+  "flightId" : "F124"
+}, {
+  "passengers" : [ {
+    "name" : "Aysel",
+    "surname" : "Xanqizi"
+  }, {
+    "name" : "Zerqelem",
+    "surname" : "Qaraqurbanli"
+  } ],
+  "bookingId" : "5",
+  "flightId" : "F123"
+}, {
+  "passengers" : [ {
+    "name" : "John",
+    "surname" : "Doe"
+  } ],
+  "bookingId" : "6",
+  "flightId" : "F124"
+} ]

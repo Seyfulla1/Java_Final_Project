@@ -347,5 +347,5 @@
   "destination" : "City10",
   "departureDate" : [ 2025, 6, 2, 10, 0 ],
   "capacity" : 150,
-  "availableSeats" : 148
+  "availableSeats" : 150
 } ]

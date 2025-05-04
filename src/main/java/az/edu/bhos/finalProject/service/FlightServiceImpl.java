@@ -60,10 +60,6 @@ public class FlightServiceImpl implements FlightService {
         if (seatsToCancel <= 0) {
             throw new InvalidSeatsCancellationException("Number of seats to cancel must be positive.");
         }
-        int bookedSeats = flight.getCapacity() - flight.getAvailableSeats();
-        if (seatsToCancel > bookedSeats) {
-            throw new InvalidSeatsCancellationException("Number of seats to cancel must be less than booked seats.");
-        }
 
         flight.setAvailableSeats(flight.getAvailableSeats() + seatsToCancel);
 

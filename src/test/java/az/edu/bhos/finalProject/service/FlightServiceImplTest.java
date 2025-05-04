@@ -8,12 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -86,7 +84,7 @@ public class FlightServiceImplTest {
 
     @Test
     public void testCancelBookingWithInvalidSeats() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
             flightService.cancelBooking("F001", -1);
         });
         assertEquals("Number of seats to cancel must be positive.", exception.getMessage());

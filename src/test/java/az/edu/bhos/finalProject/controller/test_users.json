@@ -1,0 +1,8 @@
+[ {
+  "passenger" : {
+    "name" : "John",
+    "surname" : "Doe"
+  },
+  "username" : "johndoe",
+  "password" : "pass123"
+} ]
