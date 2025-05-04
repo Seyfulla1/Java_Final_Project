@@ -1,0 +1,43 @@
+[ {
+  "passenger" : {
+    "name" : "Ali",
+    "surname" : "Aliyev"
+  },
+  "username" : "ali",
+  "password" : "123"
+}, {
+  "passenger" : {
+    "name" : "Veli",
+    "surname" : "Veliev"
+  },
+  "username" : "veli",
+  "password" : "1a23"
+}, {
+  "passenger" : {
+    "name" : "Hasan",
+    "surname" : "Hasanov"
+  },
+  "username" : "hasan",
+  "password" : "1b23"
+}, {
+  "passenger" : {
+    "name" : "Huseyn",
+    "surname" : "Huseynov"
+  },
+  "username" : "huseyn",
+  "password" : "1c23"
+}, {
+  "passenger" : {
+    "name" : "Mehmet",
+    "surname" : "Mehmedov"
+  },
+  "username" : "mehmet",
+  "password" : "asd4"
+}, {
+  "passenger" : {
+    "name" : "Mika",
+    "surname" : "Mikaev"
+  },
+  "username" : "mika",
+  "password" : "123"
+} ]

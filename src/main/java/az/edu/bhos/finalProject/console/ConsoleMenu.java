@@ -41,7 +41,7 @@ public class ConsoleMenu {
             }
 
             printMenu();
-            String choice = scanner.nextLine();
+            String choice = scanner.nextLine().trim();
 
             try {
                 switch (choice) {
@@ -102,11 +102,27 @@ public class ConsoleMenu {
         String destination = scanner.nextLine();
         System.out.print("Enter date (yyyy-MM-ddTHH:mm): ");
         String dateInput = scanner.nextLine();
-        System.out.print("Enter number of people: ");
-        int people = Integer.parseInt(scanner.nextLine());
+
+        int people;
+        while (true) {
+            System.out.print("Enter the number of people: ");
+            String input = scanner.nextLine();
+
+            try {
+                people = Integer.parseInt(input);
+
+                if (people <= 0) {
+                    System.out.println("Number must be positive. Please try again.");
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+            }
+        }
 
         LocalDateTime date = LocalDateTime.parse(dateInput, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-        List<Flight> availableFlights = new ArrayList<>();
+        List<Flight> availableFlights;
         try {
             availableFlights=flightController.searchAvailableFlights("Kiev", destination, date, people);
         }catch (FlightNotFoundException e){

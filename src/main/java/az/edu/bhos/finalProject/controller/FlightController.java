@@ -26,13 +26,13 @@ public class FlightController {
         if (!userService.isAuthenticated()) {
             loggingService.logAction("Unauthenticated attempt to " + action);
             System.out.println("Please log in to proceed.");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public void viewAllFlights() {
-        if (!ensureAuthenticated("view flights")) return;
+        if (ensureAuthenticated("view flights")) return;
 
         List<Flight> flights = flightService.getAllFlights();
         flights.forEach(System.out::println);
@@ -52,7 +52,7 @@ public class FlightController {
     }
 
     public void bookFlight(String flightID, int requestedSeats) {
-        if (!ensureAuthenticated("book a flight")) return;
+        if (ensureAuthenticated("book a flight")) return;
 
         try {
             if (flightService.bookFlight(flightID, requestedSeats)) {
@@ -65,21 +65,8 @@ public class FlightController {
         }
     }
 
-    public void cancelBooking(String flightID, int seatsToCancel) {
-        if (!ensureAuthenticated("cancel a flight booking")) return;
-
-        try {
-            if (flightService.cancelBooking(flightID, seatsToCancel)) {
-                loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " canceled booking for flight " + flightID);
-                System.out.println("Flight booking canceled successfully!");
-            }
-        } catch (IOException e) {
-            loggingService.logAction("Error canceling booking for flight " + flightID + ": " + e.getMessage());
-            System.out.println("Error canceling booking: " + e.getMessage());
-        }
-    }
     public void showFlightInfo(String flightID) {
-        if (!ensureAuthenticated("view flight info")) return;
+        if (ensureAuthenticated("view flight info")) return;
 
         try {
             Flight flight = flightService.getFlightById(flightID);

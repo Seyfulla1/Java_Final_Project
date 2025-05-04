@@ -27,13 +27,13 @@ public class BookingController {
         if (!userService.isAuthenticated()) {
             loggingService.logAction("Unauthenticated attempt to " + action);
             System.out.println("Please log in to proceed.");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public void viewBookings() {
-        if (!ensureAuthenticated("view bookings")) return;
+        if (ensureAuthenticated("view bookings")) return;
 
         Passenger currentPassenger = userService.getCurrentUser().getPassenger();
         List<Booking> bookings = bookingService.getBookingsByPassenger(currentPassenger.getName(), currentPassenger.getSurname());
@@ -47,7 +47,7 @@ public class BookingController {
     }
 
     public void createBooking(String flightID, List<Passenger> passengers) {
-        if (!ensureAuthenticated("create a booking")) return;
+        if (ensureAuthenticated("create a booking")) return;
 
         try {
             String bookingId = UUID.randomUUID().toString();
@@ -66,10 +66,15 @@ public class BookingController {
     }
 
     public void deleteBooking(String bookingId) {
-        if (!ensureAuthenticated("delete a booking")) return;
+        if (ensureAuthenticated("delete a booking")) return;
 
         try {
+            Booking booking = bookingService.getBookingById(bookingId);
+            String flightID = booking.getFlightId();
+            int seatsToCancel = booking.getPassengers().size();
+
             if (bookingService.deleteBookingById(bookingId)) {
+                flightService.cancelBooking(flightID, seatsToCancel);
                 loggingService.logAction("User " + userService.getCurrentUser().getUsername() + " deleted booking with ID " + bookingId);
                 System.out.println("Booking deleted successfully!");
             }
@@ -80,3 +85,4 @@ public class BookingController {
     }
 
 }
+
