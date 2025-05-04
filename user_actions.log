@@ -1,0 +1,10 @@
+2025-05-04 19:54:50 - User user1 logged in successfully.
+2025-05-04 19:55:11 - Exception occurred: Text '' could not be parsed at index 0
+2025-05-04 19:55:26 - User user1 viewed flight FL050
+2025-05-04 19:55:52 - User user1 searched for flights.
+2025-05-04 19:56:23 - User user1 created a booking.
+2025-05-04 19:56:26 - User user1 viewed their bookings.
+2025-05-04 19:56:43 - User user1 deleted booking with ID 5dc53f25-6daf-4a88-8a9a-691a49f48d6e
+2025-05-04 19:57:08 - User user1 logged out.
+2025-05-04 19:57:14 - User user1 logged in successfully.
+2025-05-04 19:57:16 - User user1 viewed their bookings.

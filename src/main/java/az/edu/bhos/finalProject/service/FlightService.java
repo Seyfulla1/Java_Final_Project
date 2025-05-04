@@ -7,9 +7,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface FlightService {
-    List<Flight> getAllFlights();
-
     Flight getFlightById(String flightID);
+
+    List<Flight> getAllFlights();
 
     List<Flight> searchAvailableFlights(String departure, String destination, LocalDateTime date, int requestedSeats);
 

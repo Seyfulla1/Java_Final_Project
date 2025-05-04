@@ -3,6 +3,8 @@ package az.edu.bhos.finalProject.service;
 import az.edu.bhos.finalProject.dao.FlightDAO;
 import az.edu.bhos.finalProject.entity.Flight;
 import az.edu.bhos.finalProject.exception.FlightNotFoundException;
+import az.edu.bhos.finalProject.exception.NotEnoughSeatsException;
+import az.edu.bhos.finalProject.exception.InvalidSeatsCancellationException;
 
 
 import java.io.IOException;
@@ -39,7 +41,7 @@ public class FlightServiceImpl implements FlightService {
     public boolean bookFlight(String flightID, int requestedSeats) throws IOException {
         Flight flight = getFlightById(flightID);
         if (flight.getAvailableSeats() < requestedSeats) {
-            throw new RuntimeException("Not enough available seats for the requested booking.");
+            throw new NotEnoughSeatsException("Not enough available seats for the requested booking.");
         }
 
         flight.setAvailableSeats(flight.getAvailableSeats() - requestedSeats);
@@ -56,7 +58,11 @@ public class FlightServiceImpl implements FlightService {
     public boolean cancelBooking(String flightID, int seatsToCancel) throws IOException {
         Flight flight = getFlightById(flightID);
         if (seatsToCancel <= 0) {
-            throw new IllegalArgumentException("Number of seats to cancel must be positive.");
+            throw new InvalidSeatsCancellationException("Number of seats to cancel must be positive.");
+        }
+        int bookedSeats = flight.getCapacity() - flight.getAvailableSeats();
+        if (seatsToCancel > bookedSeats) {
+            throw new InvalidSeatsCancellationException("Number of seats to cancel must be less than booked seats.");
         }
 
         flight.setAvailableSeats(flight.getAvailableSeats() + seatsToCancel);
