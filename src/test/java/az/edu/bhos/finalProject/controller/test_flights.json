@@ -2,7 +2,7 @@
   "flightID" : "FL123",
   "departure" : "Baku",
   "destination" : "London",
-  "departureDate" : [ 2025, 5, 4, 23, 17 ],
+  "departureDate" : [ 2025, 5, 6, 15, 57 ],
   "capacity" : 100,
   "availableSeats" : 98
 } ]
